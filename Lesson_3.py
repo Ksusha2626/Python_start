@@ -1,23 +1,17 @@
 """ Реализовать функцию, принимающую два числа (позиционные аргументы) и выполняющую их деление."""
 
 
-def division(arg_1, arg_2):
+def division(arg):
     try:
-        return f'{arg_1 / arg_2:.2f}'
+        dividend, divider = [int(_) for _ in arg]
+        return f'{dividend / divider:.2f}'
     except ZeroDivisionError:
         print('Делить на ноль нельзя!')
-
-
-def division_args():
-    try:
-        answer = input('Введите делимое и делитель: ').split()
-        dividend, divider = [int(_) for _ in answer]
-        print(division(dividend, divider))
     except ValueError:
         print('Не хватает значения')
 
 
-division_args()
+print(division(input('Введите делимое и делитель: ').split()))
 
 """ Реализовать функцию, принимающую несколько параметров, описывающих данные пользователя: имя, фамилия, год рождения,
 город проживания, email, телефон. Функция должна принимать параметры как именованные аргументы.
@@ -48,13 +42,13 @@ print(my_func(9, 8, 45))
 
 
 def my_func(x, y):
-    y = abs(y)
-    for _ in range(y - 1):
-        x *= x
+    i = x
+    for _ in range(abs(y) - 1):
+        x *= i
     return 1 / x
 
 
-print(my_func(66, -2))
+print(my_func(2, -4))
 
 """  Программа запрашивает у пользователя строку чисел, разделенных пробелом.
 При нажатии Enter должна выводиться сумма чисел.
