@@ -9,9 +9,9 @@ def my_func_1():
         num = [int(_) for _ in argv[1:]]
         return (num[0] * num[1]) + num[2]
     except ValueError:
-        print('Вы ввели недопустимое значение')
+        return 'Вы ввели недопустимое значение'
     except IndexError:
-        print('Вы ввели недостаточное количество параметров')
+        return 'Вы ввели недостаточное количество параметров'
 
 
 print(my_func_1())
@@ -41,14 +41,14 @@ my_list = [10, 10, 4, 6, 6, 9, 8]
 res = [i for i in my_list if my_list.count(i) == 1]
 print(res)
 
-"""Реализовать формирование списка. В список должны войти четные числа от 100 до 1000 (включая границы).
+"""Реализовать формирование списка. В список должны войти четные числа от 20 до 100 (включая границы).
 Необходимо получить результат вычисления произведения всех элементов списка."""
 
 '''1 вариант'''
 
 from functools import reduce
 
-my_list = [_ for _ in range(1, 7) if _ % 2 == 0]
+my_list = [_ for _ in range(20, 101) if _ % 2 == 0]
 print(reduce(lambda x, y: x * y, my_list))
 
 '''2 вариант'''
@@ -89,10 +89,10 @@ my_func()
 
 def fibo_gen():
     x = 1
-    for el in range(2, 20):
+    for el in range(1, 16):
         x *= el
-    yield x
+        yield x
 
 
 for el in fibo_gen():
-    print(str(el)[:15])
+    print(el)
