@@ -18,6 +18,14 @@ class Matrix:
             print()
         return ''
 
+    '''2 варианта реализации __str__'''
+
+    # def __str__(self):
+    #     return '\n'.join(map(str, self.my_list))
+
+    # def __str__(self):
+    #     return str('\n'.join(['\t'.join([str(el) for el in i]) for i in self.my_list]))
+
     def __add__(self, other):
         for i in range(len(self.my_list)):
             for i_2 in range(len(other.my_list[i])):
@@ -28,7 +36,6 @@ class Matrix:
 m = Matrix([[-1, 0, 1], [-1, 0, 1], [0, 1, -1], [1, 1, -1]])
 new_m = Matrix([[-2, 0, 2], [-2, 0, 2], [0, 2, -2], [2, 2, -7]])
 print(m.__add__(new_m))
-
 
 """Реализовать проект расчета суммарного расхода ткани на производство одежды. Основная сущность (класс) этого 
 проекта — одежда, которая может иметь определенное название. К типам одежды в этом проекте относятся пальто и костюм. 
@@ -42,13 +49,12 @@ from abc import ABC, abstractmethod
 
 class Clothes(ABC):
 
-    def __init__(self, height=None, size=None):
-        self.height = height
-        self.size = size
+    def __init__(self, param):
+        self.param = param
 
     @property
-    def fabric_consumption(self):
-        return f'Сумма затраченной ткани равна: {self.size / 6.5 + 0.5 + 2 * self.height + 0.3 :.2f}'
+    def consumption(self):
+        return f'Сумма затраченной ткани равна: {self.param / 6.5 + 0.5 + 2 * self.param + 0.3 :.2f}'
 
     @abstractmethod
     def abstract(self):
@@ -56,25 +62,25 @@ class Clothes(ABC):
 
 
 class Coat(Clothes):
-    def fabric_coat_consumption(self):
-        return f'Для пошива пальто нужно: {self.size / 6.5 + 0.5 :.2f} ткани'
+    def consumption(self):
+        return f'Для пошива пальто нужно: {self.param / 6.5 + 0.5 :.2f} ткани'
 
     def abstract(self):
         return 'Smth vary abstract second'
 
 
 class Costume(Clothes):
-    def fabric_costume_consumption(self):
-        return f'Для пошива костюма нужно: {2 * self.height + 0.3 :.2f} ткани'
+    def consumption(self):
+        return f'Для пошива костюма нужно: {2 * self.param + 0.3 :.2f} ткани'
 
     def abstract(self):
         pass
 
 
-coat = Coat(400, 4)
+coat = Coat(400)
 costume = Costume(55)
-print(coat.fabric_consumption)
-print(costume.fabric_costume_consumption())
+print(coat.consumption)
+print(costume.consumption())
 print(coat.abstract())
 
 """Реализовать программу работы с органическими клетками, состоящими из ячеек. Необходимо создать класс Клетка. В его 
